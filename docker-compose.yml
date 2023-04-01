@@ -1,0 +1,23 @@
+---
+version: "3.7"
+services:
+    jupyter-hub:
+      container_name: jupyterhub
+      restart: always
+      build:
+        context: .
+        dockerfile: jupyterhub/Dockerfile
+      ports:
+        - 8000:8000
+      volumes:
+        - ./jupyterhub/jupyterhub_config.py:/srv/jupyterhub/jupyterhub_config.py
+        - /var/run/docker.sock:/var/run/docker.sock
+      networks:
+        - jupyterhub
+      healthcheck:
+        test: ["CMD-SHELL", "curl --fail http://localhost:8000/hub/login || exit 1"]
+        interval: 600s
+
+networks:
+  jupyterhub:
+    name: jupyterhub
