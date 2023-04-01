@@ -1,0 +1,36 @@
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
+
+ENV PYTHONUNBUFFERED=1
+ENV TZ=Europe/Berlin
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PATH="/usr/local/cuda-11.8/bind${PATH:+:${PATH}}"
+ENV LD_LIBRARY_PATH="/usr/local/cuda-11.8/lib64:${LD_LIBRARY_PATH}"
+ENV LD_LIBRARY_PATH="/usr/local/cuda-11.8/include:${LD_LIBRARY_PATH}"
+ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/extras/CUPTI/lib64"
+
+RUN apt update && \
+    apt install -y python3-pip ffmpeg libsm6 libxext6 && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --upgrade setuptools pip
+COPY jupyterlab/requirements/jupyterlab.txt requirements/jupyterlab.txt
+RUN pip3 install -r requirements/jupyterlab.txt
+RUN pip3 install torch==2.* torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu118
+RUN pip3 install tensorflow==2.*
+
+ENV TF_FORCE_GPU_ALLOW_GROWTH="true"
+ENV XLA_PYTHON_CLIENT_PREALLOCATE="false"
+ENV XLA_PYTHON_CLIENT_ALLOCATOR="platform"
+
+RUN mkdir -p /usr/local/share/jupyter/lab/settings
+COPY jupyterlab/overrides.json /usr/local/share/jupyter/lab/settings/overrides.json
+
+RUN mkdir -p /jupyterlab/resources
+COPY jupyterlab/resources/* /jupyterlab/resources/
+
+ENV PYLINTRC=/jupyterlab/resources/pylintrc
+ENV PYPROJECTTOML=/jupyterlab/resources/pyproject.toml 
+
+RUN useradd -ms /bin/bash jovyan
+
+USER jovyan
+RUN mkdir -p /home/jovyan/work
