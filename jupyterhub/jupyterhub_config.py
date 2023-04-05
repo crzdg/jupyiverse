@@ -18,9 +18,10 @@ c.JupyterHub.allow_named_servers = True
 c.JupyterHub.spawner_class = "dockerspawner.DockerSpawner"
 c.DockerSpawner.name_template = "{prefix}-{username}-{servername}"
 c.DockerSpawner.allowed_images = [
+    "jupyter-cuda118-2204-py311:latest",
     "jupyter-cuda118-2204:latest",
-    "jupyter-cuda118-2004:latest",
-    "jupyter-cuda112-2004:latest",
+    "jupyter-cuda118-2004-py310:latest",
+    "jupyter-cuda112-2004-py310:latest",
 ]
 
 # tell the user containers to connect to our docker network
