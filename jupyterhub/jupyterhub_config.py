@@ -22,6 +22,8 @@ c.DockerSpawner.allowed_images = [
     "jupyter-cuda118-2204:latest",
     "jupyter-cuda118-2004-py310:latest",
     "jupyter-cuda112-2004-py310:latest",
+    "jupyter-2204:latest",
+    "jupyter-2004:latest",
 ]
 
 # tell the user containers to connect to our docker network

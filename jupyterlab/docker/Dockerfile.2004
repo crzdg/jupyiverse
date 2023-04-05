@@ -1,0 +1,49 @@
+FROM ubuntu:20.04
+
+ENV PYTHONUNBUFFERED=1
+ENV TZ=Europe/Berlin
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update && \
+    apt install -y software-properties-common && rm -rf /var/lib/apt/lists/*
+
+RUN apt update && \
+    apt install -y python3-pip && rm -rf /var/lib/apt/lists/*
+
+# Install JupyterLab in default system python
+RUN python3.8 -m pip install --upgrade pip setuptools
+COPY jupyterlab/requirements/jupyterlab-py38.txt requirements/jupyterlab-py38.txt
+RUN python3.8 -m pip install -r requirements/jupyterlab-py38.txt
+
+RUN python3.8 -m ipykernel install --name "py38" --display-name "Python 3.8" 
+RUN jupyter kernelspec remove -y python3
+
+# Cleanup pip cache
+RUN rm -r /root/.cache/pip
+
+# Jupyterlab settings && resources
+RUN mkdir -p /usr/local/share/jupyter/lab/settings
+COPY jupyterlab/overrides.json /usr/local/share/jupyter/lab/settings/overrides.json
+
+RUN mkdir -p /jupyterlab/resources
+COPY jupyterlab/resources/* /jupyterlab/resources/
+
+# XLA and TF settings
+ENV TF_FORCE_GPU_ALLOW_GROWTH="true"
+ENV XLA_PYTHON_CLIENT_PREALLOCATE="false"
+ENV XLA_PYTHON_CLIENT_ALLOCATOR="platform"
+
+# File variables
+ENV PYLINTRC=/jupyterlab/resources/pylintrc
+ENV PYPROJECTTOML=/jupyterlab/resources/pyproject.toml
+
+# User environment
+RUN useradd -ms /bin/bash jovyan
+USER jovyan
+
+# Default jupyter_lab_config
+RUN mkdir -p /home/jovyan/.jupyter
+COPY jupyterlab/jupyter_lab_config.py /home/jovyan/.jupyter/jupyter_lab_config.py
+
+RUN mkdir -p /home/jovyan/work
+WORKDIR /home/jovyan
