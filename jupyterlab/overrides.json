@@ -1,59 +1,62 @@
 {
-  "@jupyterlab/apputils-extension:themes": {
-    "theme": "jupyterlab_gruvbox_dark"
-  },
-  "@jupyterlab/apputils-extension:notification": {
-    "fetchNews": "false"
-  },
-  "@ryantam626/jupyterlab_code_formatter:settings": {
-    "formatOnSave": true,
-    "black": {
-        "line_length": 120,
-        "string_normalization": true
+    "@jupyterlab/apputils-extension:themes": {
+        "theme": "JupyterLab Light"
     },
-    "isort": {
-        "line_length": 120,
-        "multi_line_output": 3,
-        "include_trailing_comma": true,
-        "force_grid_wrap": 0,
-        "use_parentheses": true,
-        "ensure_newline_before_comments": true
-    }
-  },
-  "@jupyterlab/shortcuts-extension:shortcuts": {
-    "shortcuts": [
-      {
-        "command": "jupyterlab_code_formatter:format",
-        "keys": [
-          "Ctrl K",
-          "Ctrl M"
-        ],
-        "selector": ".jp-Notebook.jp-mod-editMode"
-      }
-    ]
-  },
-  "@jupyterlab/docmanager-extension:plugin": {
-    "defaultViewers": {
-      "markdown": "Jupytext Notebook",
-      "myst": "Jupytext Notebook",
-      "r-markdown": "Jupytext Notebook",
-      "quarto": "Jupytext Notebook",
-      "julia": "Jupytext Notebook",
-      "python": "Jupytext Notebook",
-      "r": "Jupytext Notebook"
-    }
-  },
-  "@jupyter-lsp/jupyterlab-lsp:plugin": {
-    "language_servers": {
-      "pylsp": {
-        "serverSettings": {
-          "pylsp.plugins.pylint.enabled": true,
-          "pylsp.plugins.pylint.executable": "pylint",
-          "pylsp.plugins.pylint.args": ["--output-format=text"],
-          "pylsp.plugins.jedi_completion.enabled": true,
-          "pylsp.plugins.jedi_completion.fuzzy": true
+    "@jupyterlab/apputils-extension:notification": {
+        "fetchNews": "false"
+    },
+    "@ryantam626/jupyterlab_code_formatter:settings": {
+        "formatOnSave": true,
+        "black": {
+            "line_length": 120,
+            "string_normalization": true
+        },
+        "isort": {
+            "line_length": 120,
+            "multi_line_output": 3,
+            "include_trailing_comma": true,
+            "force_grid_wrap": 0,
+            "use_parentheses": true,
+            "ensure_newline_before_comments": true
         }
-      }
+    },
+    "@jupyterlab/shortcuts-extension:shortcuts": {
+        "shortcuts": [
+            {
+                "command": "jupyterlab_code_formatter:format",
+                "keys": [
+                    "Ctrl K",
+                    "Ctrl M"
+                ],
+                "selector": ".jp-Notebook.jp-mod-editMode"
+            }
+        ]
+    },
+    "@jupyterlab/docmanager-extension:plugin": {
+        "defaultViewers": {
+            "markdown": "Notebook",
+            "myst": "Notebook",
+            "r-markdown": "Notebook",
+            "quarto": "Notebook",
+            "julia": "Notebook",
+            "python": "Notebook",
+            "r": "Notebook"
+        }
+    },
+    "@jupyter-lsp/jupyterlab-lsp:plugin": {
+        "language_servers": {
+            "pylsp": {
+                "serverSettings": {
+                    "pylsp.plugins.pylint.enabled": true,
+                    "pylsp.plugins.pylint.args": [
+                        "--rcfile=/jupyterlab/resources/pylintrc",
+                        "--output-format=text"
+                    ],
+                    "pylsp.plugins.pylint.executable": "pylint",
+                    "pylsp.plugins.jedi_completion.enabled": true,
+                    "pylsp.plugins.jedi_completion.fuzzy": true
+                }
+            }
+        }
     }
-  }
 }
