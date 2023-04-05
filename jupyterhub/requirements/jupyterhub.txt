@@ -37,7 +37,7 @@ requests==2.28.2          # via docker, jupyterhub
 ruamel-yaml==0.17.21      # via jupyter-telemetry
 ruamel-yaml-clib==0.2.7   # via ruamel-yaml
 six==1.16.0               # via python-dateutil
-sqlalchemy==2.0.7         # via alembic, jupyterhub
+sqlalchemy==2.0.8         # via alembic, jupyterhub
 tornado==6.2              # via jupyterhub
 traitlets==5.9.0          # via jupyter-telemetry, jupyterhub
 typing-extensions==4.5.0  # via alembic, sqlalchemy

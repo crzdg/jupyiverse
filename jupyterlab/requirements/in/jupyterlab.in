@@ -9,10 +9,6 @@ jupyterlab-gruvbox-dark
 jupyterlab-theme-solarized-dark
 theme-darcula
 
-matplotlib
-scikit-learn
-opencv-contrib-python
-
 black
 isort
 pylint

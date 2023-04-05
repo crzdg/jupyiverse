@@ -1,0 +1,68 @@
+[project]
+dynamic = ["version"]
+name = "jupyiverse"
+readme = "README.md"
+description = "Manage the jupyiverse!"
+authors = [
+    { name = "Reto Barmettler"},
+]
+
+# Workaround to flat-layout error in pip-compile
+[tool.setuptools]
+py-modules = []
+
+[project.urls]
+Source = "https://github.com/crzdg/jupyiverse"
+
+[project.optional-dependencies]
+dev = [
+    "hatch",
+]
+
+# pip-compile-main
+[tool.hatch.envs.pip-compile-main]
+scripts.update = "pip-compile -U -o jupyterlab/requirements/main-py{matrix:python}-{matrix:cuda}.txt --annotation-style=line --resolver=backtracking jupyterlab/requirements/in/base-{matrix:cuda}.in"
+dependencies = [
+    "pip-tools"
+]
+
+[tool.hatch.envs.pip-compile-main.overrides]
+matrix.cuda.python = { value = "311", if = ["cuda118"] }
+
+[[tool.hatch.envs.pip-compile-main.matrix]]
+python = ["310"]
+cuda = ["cuda112", "cuda118"]
+
+# pip-compile-jupyterlab
+[tool.hatch.envs.pip-compile-jupyterlab]
+scripts.update = "pip-compile -U -o jupyterlab/requirements/jupyterlab-py{matrix:python}.txt --annotation-style=line --resolver=backtracking jupyterlab/requirements/in/jupyterlab.in"
+dependencies = [
+    "pip-tools"
+]
+
+[[tool.hatch.envs.pip-compile-jupyterlab.matrix]]
+python = ["310", "38"]
+
+# pip-compile-jupyterhub
+[tool.hatch.envs.pip-compile-jupyterhub]
+scripts.update = "pip-compile -U -o jupyterhub/requirements/jupyterhub.txt --annotation-style=line --resolver=backtracking jupyterhub/requirements/jupyterhub.in"
+dependencies = [
+    "pip-tools"
+]
+
+# pip-compile-dev
+[tool.hatch.envs.pip-compile-dev]
+scripts.update = "pip-compile -U -o requirements/dev.txt --annotation-style=line --resolver=backtracking requirements/dev.in"
+dependencies = [
+    "pip-tools"
+]
+
+[[tool.hatch.envs.pip-compile-dev.matrix]]
+python = ["310"]
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120

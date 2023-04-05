@@ -1,14 +1,19 @@
 pip-compile-jupyterlab:
-	 pip-compile -o jupyterlab/requirements/jupyterlab.txt --annotation-style=line --resolver=backtracking jupyterlab/requirements/jupyterlab.in
+	@hatch run pip-compile-jupyterlab:update
 
 pip-compile-jupyterhub:
-	 pip-compile -o jupyterhub/requirements/jupyterhub.txt --annotation-style=line --resolver=backtracking jupyterhub/requirements/jupyterhub.in
+	@hatch run pip-compile-jupyterhub:update
 
 pip-compile-dev:
-	pip-compile -o requirements/dev.txt --annotation-style=line --resolver=backtracking requirements/dev.in
+	@hatch run pip-compile-dev:update
+
+pip-compile-mains:
+	@hatch run pip-compile-main:update
+
+update: pip-compile-dev pip-compile-jupyterhub pip-compile-jupyterlab pip-compile-mains
 
 build-%:
-	docker build . -t jupyter-$* -f jupyterlab/docker/cuda/Dockerfile.$*
+	docker build . -t jupyter-$* -f jupyterlab/docker/Dockerfile.$*
 
 build-hub:
 	docker compose build
