@@ -9,10 +9,13 @@ ENV LD_LIBRARY_PATH="/usr/local/cuda-11.8/include:${LD_LIBRARY_PATH}"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/extras/CUPTI/lib64"
 
 RUN apt update && \
-    apt install -y software-properties-common && rm -rf /var/lib/apt/lists/*
+    apt install -y software-properties-common curl && rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash
 
 RUN apt update && \
     apt install -y python3-pip \
+        nodejs \
         ffmpeg \
         libsm6 \
         libxext6 && rm -rf /var/lib/apt/lists/*
