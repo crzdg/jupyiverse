@@ -5,19 +5,19 @@
 #    pip-compile --annotation-style=line --output-file=jupyterlab/requirements/jupyterlab-py310.txt --resolver=backtracking jupyterlab/requirements/in/jupyterlab.in
 #
 aiofiles==22.1.0          # via ypy-websocket
-aiosqlite==0.18.0         # via ypy-websocket
-alembic==1.10.2           # via jupyterhub
+aiosqlite==0.19.0         # via ypy-websocket
+alembic==1.10.3           # via jupyterhub
 anyio==3.6.2              # via jupyter-server
 argon2-cffi==21.3.0       # via jupyter-server, nbclassic, notebook
 argon2-cffi-bindings==21.2.0  # via argon2-cffi
 arrow==1.2.3              # via isoduration
-astroid==2.15.2           # via pylint
+astroid==2.15.3           # via pylint
 asttokens==2.2.1          # via stack-data
 async-generator==1.10     # via jupyterhub
-attrs==22.2.0             # via jsonschema
+attrs==23.1.0             # via jsonschema
 babel==2.12.1             # via jupyterlab-server
 backcall==0.2.0           # via ipython
-beautifulsoup4==4.12.0    # via nbconvert
+beautifulsoup4==4.12.2    # via nbconvert
 black==23.3.0             # via -r jupyterlab/requirements/in/jupyterlab.in
 bleach==6.0.0             # via nbconvert
 certifi==2022.12.7        # via requests
@@ -26,8 +26,8 @@ cffi==1.15.1              # via argon2-cffi-bindings, cryptography
 charset-normalizer==3.1.0  # via requests
 click==8.1.3              # via black
 comm==0.1.3               # via ipykernel
-cryptography==40.0.1      # via pyopenssl
-debugpy==1.6.6            # via ipykernel
+cryptography==40.0.2      # via pyopenssl
+debugpy==1.6.7            # via ipykernel
 decorator==5.1.1          # via ipython
 defusedxml==0.7.1         # via nbconvert
 dill==0.3.6               # via pylint
@@ -48,23 +48,23 @@ jinja2==3.1.2             # via jupyter-server, jupyterhub, jupyterlab, jupyterl
 json5==0.9.11             # via jupyterlab-server
 jsonpointer==2.3          # via jsonschema
 jsonschema[format-nongpl]==4.17.3  # via jupyter-events, jupyter-telemetry, jupyterlab-server, nbformat
-jupyter-client==8.1.0     # via ipykernel, jupyter-server, nbclassic, nbclient, notebook
+jupyter-client==8.2.0     # via ipykernel, jupyter-server, nbclassic, nbclient, notebook
 jupyter-core==5.3.0       # via ipykernel, jupyter-client, jupyter-server, jupyterlab, nbclassic, nbclient, nbconvert, nbformat, notebook
 jupyter-events==0.6.3     # via jupyter-server, jupyter-server-fileid
 jupyter-lsp==2.0.1        # via jupyterlab-lsp
 jupyter-server==2.5.0     # via jupyter-lsp, jupyter-server-fileid, jupyterlab, jupyterlab-server, nbclassic, notebook-shim
-jupyter-server-fileid==0.8.0  # via jupyter-server-ydoc
+jupyter-server-fileid==0.9.0  # via jupyter-server-ydoc
 jupyter-server-terminals==0.4.4  # via jupyter-server
 jupyter-server-ydoc==0.8.0  # via jupyterlab
 jupyter-telemetry==0.1.0  # via jupyterhub
-jupyter-ydoc==0.2.3       # via jupyter-server-ydoc, jupyterlab
-jupyterhub==3.1.1         # via -r jupyterlab/requirements/in/jupyterlab.in
+jupyter-ydoc==0.2.4       # via jupyter-server-ydoc, jupyterlab
+jupyterhub==4.0.0         # via -r jupyterlab/requirements/in/jupyterlab.in
 jupyterlab==3.6.3         # via -r jupyterlab/requirements/in/jupyterlab.in, jupyterlab-code-formatter, jupyterlab-gruvbox-dark, jupyterlab-lsp, theme-darcula
-jupyterlab-code-formatter==1.6.0  # via -r jupyterlab/requirements/in/jupyterlab.in
+jupyterlab-code-formatter==1.6.1  # via -r jupyterlab/requirements/in/jupyterlab.in
 jupyterlab-gruvbox-dark==0.1.0  # via -r jupyterlab/requirements/in/jupyterlab.in
 jupyterlab-lsp==4.0.1     # via -r jupyterlab/requirements/in/jupyterlab.in
 jupyterlab-pygments==0.2.2  # via nbconvert
-jupyterlab-server==2.22.0  # via jupyterlab
+jupyterlab-server==2.22.1  # via jupyterlab
 jupyterlab-theme-solarized-dark==2.1.0  # via -r jupyterlab/requirements/in/jupyterlab.in
 jupyterlab-widgets==3.0.7  # via ipywidgets
 jupytext==1.14.5          # via -r jupyterlab/requirements/in/jupyterlab.in
@@ -80,13 +80,13 @@ mistune==2.0.5            # via nbconvert
 mypy-extensions==1.0.0    # via black
 nbclassic==0.5.5          # via jupyterlab, notebook
 nbclient==0.7.3           # via nbconvert
-nbconvert==7.3.0          # via jupyter-server, nbclassic, notebook
+nbconvert==7.3.1          # via jupyter-server, nbclassic, notebook
 nbformat==5.8.0           # via jupyter-server, jupytext, nbclassic, nbclient, nbconvert, notebook
 nest-asyncio==1.5.6       # via ipykernel, nbclassic, notebook
-notebook==6.5.3           # via jupyterlab
+notebook==6.5.4           # via jupyterlab
 notebook-shim==0.2.2      # via nbclassic
 oauthlib==3.2.2           # via jupyterhub
-packaging==23.0           # via black, ipykernel, jupyter-server, jupyterhub, jupyterlab, jupyterlab-server, nbconvert, pytoolconfig
+packaging==23.1           # via black, ipykernel, jupyter-server, jupyterhub, jupyterlab, jupyterlab-server, nbconvert, pytoolconfig
 pamela==1.0.0             # via jupyterhub
 pandocfilters==1.5.0      # via nbconvert
 parso==0.8.3              # via jedi
@@ -97,11 +97,11 @@ platformdirs==3.2.0       # via black, jupyter-core, pylint, pytoolconfig
 pluggy==1.0.0             # via python-lsp-server
 prometheus-client==0.16.0  # via jupyter-server, jupyterhub, nbclassic, notebook
 prompt-toolkit==3.0.38    # via ipython
-psutil==5.9.4             # via ipykernel
+psutil==5.9.5             # via ipykernel
 ptyprocess==0.7.0         # via pexpect, terminado
 pure-eval==0.2.2          # via stack-data
 pycparser==2.21           # via cffi
-pygments==2.14.0          # via ipython, nbconvert
+pygments==2.15.1          # via ipython, nbconvert
 pylint==2.17.2            # via -r jupyterlab/requirements/in/jupyterlab.in
 pylsp-rope==0.1.11        # via -r jupyterlab/requirements/in/jupyterlab.in
 pyopenssl==23.1.1         # via certipy
@@ -122,8 +122,8 @@ ruamel-yaml-clib==0.2.7   # via ruamel-yaml
 send2trash==1.8.0         # via jupyter-server, nbclassic, notebook
 six==1.16.0               # via asttokens, bleach, python-dateutil, rfc3339-validator
 sniffio==1.3.0            # via anyio
-soupsieve==2.4            # via beautifulsoup4
-sqlalchemy==2.0.8         # via alembic, jupyterhub
+soupsieve==2.4.1          # via beautifulsoup4
+sqlalchemy==2.0.10        # via alembic, jupyterhub
 stack-data==0.6.2         # via ipython
 terminado==0.17.1         # via jupyter-server, jupyter-server-terminals, nbclassic, notebook
 theme-darcula==4.0.0      # via -r jupyterlab/requirements/in/jupyterlab.in
@@ -131,7 +131,7 @@ tinycss2==1.2.1           # via nbconvert
 toml==0.10.2              # via jupytext
 tomli==2.0.1              # via black, jupyterlab, pylint, pytoolconfig
 tomlkit==0.11.7           # via pylint
-tornado==6.2              # via ipykernel, jupyter-client, jupyter-server, jupyterhub, jupyterlab, nbclassic, notebook, terminado
+tornado==6.3.1            # via ipykernel, jupyter-client, jupyter-server, jupyterhub, jupyterlab, nbclassic, notebook, terminado
 traitlets==5.9.0          # via comm, ipykernel, ipython, ipywidgets, jupyter-client, jupyter-core, jupyter-events, jupyter-server, jupyter-telemetry, jupyterhub, matplotlib-inline, nbclassic, nbclient, nbconvert, nbformat, notebook
 typing-extensions==4.5.0  # via alembic, astroid, sqlalchemy
 ujson==5.7.0              # via python-lsp-jsonrpc, python-lsp-server
