@@ -61,7 +61,7 @@ Additionally, some Dockerfile including JupyterLab and a preset of dependencies.
 - pytorch
 - matplotlib
 - scikit-learn
-- opencv via python3-opencv
+- opencv-contrib-python
 
 #### 🚧 Development tools
 
